@@ -70,10 +70,8 @@ export default class RegisterForm extends Component {
             </>
           ) : (
             <Paper className="form form--wrapper" elevation={10}>
-              <p className="h4 text-center mb-4">
-              Register
-            </p>
               <form className="form" onSubmit={handleSubmit}>
+                <p className="h3 text-center mb-4">Register</p>
                 <FormControl fullWidth margin="dense">
                   <InputLabel
                     htmlFor="name"
@@ -174,6 +172,7 @@ export default class RegisterForm extends Component {
                   type="submit"
                   variant="contained"
                   color="primary"
+                  fullWidth
                   disabled={Boolean(!isValid || isSubmitting)}
                   style={{
                     margin: "16px",
@@ -184,11 +183,21 @@ export default class RegisterForm extends Component {
                 >
                   {"Register"}
                 </Button>
+
+                <p className="text-center mb-4">
+                  Already have an account?{" "}
+                  <Link
+                    to="/login"
+                    style={{
+                      color: "#39803e",
+                      textDecoration: "none",
+                      fontWeight: 900
+                    }}
+                  >
+                    Login
+                  </Link>
+                </p>
               </form>
-              <p className="h6 text-center mb-4">
-              Already have an account? <Link to="/login">Login</Link>{" "}
-              here
-            </p>
             </Paper>
           );
         }}

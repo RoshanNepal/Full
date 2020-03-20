@@ -9,6 +9,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Contact from "./pages/Contact/Contact";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
+import Resend from "./pages/Resend/Resend";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import Profile from "./pages/Profile/Profile";
@@ -53,6 +54,7 @@ export default class App extends Component {
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/resend" component={Resend} />
               <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
             <div className="footer">

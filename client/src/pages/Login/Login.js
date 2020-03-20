@@ -10,6 +10,9 @@ import { green } from "@material-ui/core/colors";
 import Paper from "@material-ui/core/Paper";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 import axios from "axios";
+import Image1 from "../../assets/img-01.png";
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 const theme = createMuiTheme({
   palette: {
     type: "light",
@@ -30,6 +33,7 @@ class Login extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/profile");
     }
+    console.log(this.props);
     // console.log(this.props);
     // fetch("http://localhost:5000/api/users/confirmation/:tokenId")
     //   .then(res => {
@@ -73,61 +77,60 @@ class Login extends Component {
       return <h1>Email not verified</h1>;
     }
     return (
-      <div className="loginformcontainer">
-        <Paper className="form form--wrapper" elevation={10}>
-          <MDBCol md="6">
-            <form onSubmit={this.onSubmit}>
-              <p className="h5 text-center mb-4">Login</p>
-              <div className="grey-text">
-                <MDBInput
-                  label="Email"
-                  group
-                  type="email"
-                  validate
-                  id="email"
-                  onChange={this.onChange}
-                  getValue={value => this.getLoginData(value, "email")}
-                  error={errors.email}
-                  error="wrong"
-                  success="right"
+      <div className="limiter">
+        <div className="container-login100">
+          <div className="wrap-login100">
+            <div className="login100-pic js-tilt" data-tilt>
+              <img src={Image1} alt="IMG" />
+            </div>
+            <form className="login100-form validate-form">
+              <span className="login100-form-title">Member Login</span>
+              <div
+                className="wrap-input100 validate-input"
+                data-validate="Valid email is required: ex@abc.xyz"
+              >
+                <input
+                  className="input100"
+                  type="text"
+                  name="email"
+                  placeholder="Email"
                 />
-
-                <span className="red-text">
-                  {errors.email}
-                  {errors.emailnotfound}
-                </span>
-                <MDBInput
-                  label="Password"
-                  group
-                  type="password"
-                  id="password"
-                  isRequired
-                  onChange={this.onChange}
-                  getValue={value => this.getLoginData(value, "password")}
-                  error={errors.email}
-                  className={classnames("", {
-                    invalid: errors.password || errors.passwordincorrect
-                  })}
-                  validate
-                />
-
-                <span className="red-text">
-                  {errors.password}
-                  {errors.passwordincorrect}
+                <span className="focus-input100" />
+                <span className="symbol-input100">
+                  <i className="fa fa-envelope" aria-hidden="true" />
                 </span>
               </div>
-              <div className="text-center">
-                <MDBBtn type="submit" color="green" style={{ color: "#fff" }}>
-                  Login
-                </MDBBtn>
+              <div
+                className="wrap-input100 validate-input"
+                data-validate="Password is required"
+              >
+                <input
+                  className="input100"
+                  type="password"
+                  name="pass"
+                  placeholder="Password"
+                />
+                <span className="focus-input100" />
+                <span className="symbol-input100">
+                  <i className="fa fa-lock" aria-hidden="true" />
+                </span>
+              </div>
+              <div className="container-login100-form-btn">
+                <button className="login100-form-btn">Login</button>
+              </div>
+              <div className="forget">
+                <Link className="txt1" to="#">
+                  Forgot Password?
+                </Link>
+              </div>
+              <div className="create">
+                <Link className="txt1" to="/register">
+                  Create your Account <ArrowRightAltIcon />
+                </Link>
               </div>
             </form>
-            <p className="h6 text-center mb-4">
-              Don't have an account yet? <Link to="/register">Sign Up</Link>{" "}
-              now.
-            </p>
-          </MDBCol>
-        </Paper>
+          </div>
+        </div>
       </div>
     );
   }
